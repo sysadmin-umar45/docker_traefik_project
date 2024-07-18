@@ -18,7 +18,7 @@ docker run -d \
   -l "traefik.http.routers.nginx.entrypoints=web" \
   -l "traefik.http.routers.nginx.entrypoints=websecure" \
   -l "traefik.http.routers.nginx.tls=true" \
-  -l "traefik.http.routers.nginx.tls.certresolver=letsencrypt" \
+  -l "traefik.http.routers.nginx.tls.certresolver=production" \
   nginx
 
 
