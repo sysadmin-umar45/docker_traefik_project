@@ -33,8 +33,6 @@ services:
     container_name: nginx
     networks:
       - web
-    ports:
-      - "80:80" 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx.rule=Host(`nginx-traefik.ayetu.net`)"
