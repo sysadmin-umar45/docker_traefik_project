@@ -1,0 +1,7 @@
+# /etc/traefik/middleware.yml
+http:
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "admin:$apr1$IUOF1FmG$lfbjICkVVu1KkFNTPur5n/"

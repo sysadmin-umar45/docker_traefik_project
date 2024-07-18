@@ -10,7 +10,7 @@ accessLog:
   filePath: /var/log/traefik/access.log
 api:
   dashboard: true
-  insecure: true  # Set to false and configure authentication for production
+  insecure: false  # set it to false if you are using middleware.yml 
 entryPoints:
   web:
     address: ":80"
@@ -23,12 +23,6 @@ entryPoints:
   websecure:
     address: ":443"
 certificatesResolvers:
-  # letsencrypt: # for testing purposes only 
-  #   acme:
-  #     email: programmingknowledge03@gmail.com
-  #     storage: /letsencrypt/acme.json
-  #     httpChallenge:
-  #       entryPoint: web
   production:
     acme:
       email: programmingknowledge03@gmail.com
@@ -41,3 +35,6 @@ providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+  file: # add this argument if you are using middleware.yml 
+    filename: /etc/traefik/middleware.yml 
+

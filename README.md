@@ -1,6 +1,5 @@
 # docker_traefik_project
 sudo vim /etc/traefik/traefik.yml
-sudo cp /home/ubuntu/docker_traefik_project/traefik/traefik.yml /etc/traefik/traefik.yml
 cat /etc/traefik/traefik.yml
 sudo vi docker-compose.yml 
 docker-compose up -d
@@ -43,10 +42,3 @@ docker run -d \
 cd /var/lib/docker/volumes
 docker restart go-scratch-app
 
-docker restart nginx
-docker restart traefik
-docker stop $(docker ps -q)
-cmd := exec.Command("docker", "run", "-d", "--name", "go-scratch-app-container", "-p", "8080:8080", "-e", "NAME=Will", "go-scratch-app")
-
-
-cd /home/ubuntu/docker_traefik_project && git pull && cd ./traefik && docker-compose down && docker-compose up -d
