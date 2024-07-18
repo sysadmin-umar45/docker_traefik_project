@@ -23,13 +23,12 @@ entryPoints:
   websecure:
     address: ":443"
 certificatesResolvers:
-  letsencrypt:
-    acme:
-      email: programmingknowledge03@gmail.com
-      storage: /letsencrypt/acme.json
-      httpChallenge:
-        entryPoint: web
-
+  # letsencrypt: # for testing purposes only 
+  #   acme:
+  #     email: programmingknowledge03@gmail.com
+  #     storage: /letsencrypt/acme.json
+  #     httpChallenge:
+  #       entryPoint: web
   production:
     acme:
       email: programmingknowledge03@gmail.com
