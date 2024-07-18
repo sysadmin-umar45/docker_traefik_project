@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Enable verbose logging
+set -x
 # Navigate to the project directory
 cd /home/ubuntu/docker_traefik_project || { echo "Directory not found"; exit 1; }
 
