@@ -2,6 +2,10 @@
 global:
   checkNewVersion: true
   sendAnonymousUsage: false
+log:
+  level: "INFO"
+  filePath: "/var/log/traefik/traefik.log"
+  format: "common"
 accessLog:
   filePath: /var/log/traefik/access.log
 api:
@@ -19,22 +23,22 @@ entryPoints:
   websecure:
     address: ":443"
 certificatesResolvers:
-  staging:
+  letsencrypt:
     acme:
       email: programmingknowledge03@gmail.com
-      storage: /ssl-certs/acme.json
-      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory" # Use Let's Encrypt staging server
+      storage: /letsencrypt/acme.json
       httpChallenge:
         entryPoint: web
+
   production:
     acme:
       email: programmingknowledge03@gmail.com
-      storage: /ssl-certs/acme.json
+      storage: /letsencrypt/acme.json
       caServer: "https://acme-v02.api.letsencrypt.org/directory" # Use Let's Encrypt production server
       httpChallenge:
         entryPoint: web
 
 providers:
   docker:
-    # endpoint: "unix:///var/run/docker.sock"
+    endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
