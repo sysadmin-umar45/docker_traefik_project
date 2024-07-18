@@ -16,7 +16,7 @@ certificatesResolvers:
   letsencrypt:
     acme:
       email: programmingknowledge03@gmail.com
-      storage: /letsencrypt/acme.json
+      storage: /ssl-certs/acme.json
       httpChallenge:
         entryPoint: web
 
