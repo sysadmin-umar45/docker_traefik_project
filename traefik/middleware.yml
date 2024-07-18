@@ -5,3 +5,4 @@ http:
       basicAuth:
         users:
           - "admin:$apr1$IUOF1FmG$lfbjICkVVu1KkFNTPur5n/"
+

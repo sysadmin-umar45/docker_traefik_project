@@ -20,7 +20,8 @@ services:
       - "traefik.http.routers.dashboard.tls=true"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.middlewares=auth"
-
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$apr1$IUOF1FmG$lfbjICkVVu1KkFNTPur5n/"
+      
   go-scratch-app:
     image: go-scratch-app  # Replace with your actual Go app image
     container_name: go-scratch-app
