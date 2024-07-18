@@ -10,7 +10,8 @@ accessLog:
   filePath: /var/log/traefik/access.log
 api:
   dashboard: true
-  insecure: true   # set it to false if you are using middleware.yml 
+  insecure: false   # set it to false if you are using middleware.yml 
+  debug: true
 entryPoints:
   web:
     address: ":80"
@@ -35,6 +36,6 @@ providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
-  # file: # add this argument if you are using middleware.yml 
-  #   filename: /etc/traefik/middleware.yml 
+  file: # add this argument if you are using middleware.yml 
+    filename: /etc/traefik/middleware.yml 
 
