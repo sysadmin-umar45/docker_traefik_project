@@ -1,8 +1,8 @@
-# # /etc/traefik/middleware.yml
-# http:
-#   middlewares:
-#     auth:
-#       basicAuth:
-#         users:
-#           - "admin:$$2y$$05$$f2qE7YaiP0C2Ps4is0nP0ewFL7m9caGnUbWHV39d8lrM217fMw2di"
+# /etc/traefik/middleware.yml
+http:
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "admin:$$2y$$05$$f2qE7YaiP0C2Ps4is0nP0ewFL7m9caGnUbWHV39d8lrM217fMw2di"
 

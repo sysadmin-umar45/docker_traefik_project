@@ -1,8 +1,9 @@
 version: '3'
 services:
   traefik:
-    image: traefik:v2.10  # You can use the latest version
+    image: traefik:latest  # You can use the latest version
     container_name: traefik
+    restart: unless-stopped
     ports:
       - "80:80"         # HTTP port
       - "443:443"       # HTTPS port
@@ -13,14 +14,14 @@ services:
       - "./letsencrypt:/letsencrypt"
     networks:
       - web
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.go-scratch-app.rule=Host(`traefik.ayetu.net`)"
-    #   - "traefik.http.routers.go-scratch-app.entrypoints=web,websecure"
-    #   - "traefik.http.routers.go-scratch-app.tls=true"
-    #   - "traefik.http.routers.go-scratch-app.tls.certresolver=production"
-      # - "traefik.http.routers.traefik.service=api@internal"
-      # - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$05$$f2qE7YaiP0C2Ps4is0nP0ewFL7m9caGnUbWHV39d8lrM217fMw2di"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.go-scratch-app.rule=Host(`traefik-dashboard.ayetu.net`)"
+      - "traefik.http.routers.go-scratch-app.entrypoints=web,websecure"
+      - "traefik.http.routers.go-scratch-app.tls=true"
+      - "traefik.http.routers.go-scratch-app.tls.certresolver=production"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$05$$f2qE7YaiP0C2Ps4is0nP0ewFL7m9caGnUbWHV39d8lrM217fMw2di"
   go-scratch-app:
     image: go-scratch-app  # Replace with your actual Go app image
     container_name: go-scratch-app
