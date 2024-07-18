@@ -1,0 +1,26 @@
+# sudo vim /etc/traefik/traefik.yml
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+accessLog:
+  filePath: /var/log/traefik/access.log
+api:
+  dashboard: true
+  insecure: true  # Set to false and configure authentication for production
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: programmingknowledge03@gmail.com
+      storage: /letsencrypt/acme.json
+      httpChallenge:
+        entryPoint: web
+
+providers:
+  docker:
+    # endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
