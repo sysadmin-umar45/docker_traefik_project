@@ -24,7 +24,7 @@ services:
       - "8081:8080"  # Map internal Go app port 8080 to external port 8081
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.go-scratch-app.rule=Host(`traefik.ayetu.net`)"
+      - "traefik.http.routers.go-scratch-app.rule=Host("traefik.ayetu.net")"
       - "traefik.http.routers.go-scratch-app.entrypoints=web,websecure"
       - "traefik.http.routers.go-scratch-app.tls=true"
       - "traefik.http.routers.go-scratch-app.tls.certresolver=production"
