@@ -11,6 +11,7 @@ cd ./traefik || { echo "Traefik directory not found"; exit 1; }
 
 # Copy the Traefik configuration file to the appropriate location
 sudo cp traefik.yml /etc/traefik/traefik.yml || { echo "Failed to copy traefik.yml"; exit 1; }
+sudo cp middleware.yml /etc/traefik/middleware.yml || { echo "Failed to copy middleware.yml"; exit 1; }
 
 # Restart the Docker Compose services
 docker-compose down && docker-compose up -d || { echo "Docker Compose failed"; exit 1; }
