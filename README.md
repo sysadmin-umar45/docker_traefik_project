@@ -20,3 +20,6 @@ docker run -d \
   -l "traefik.http.routers.go-scratch-app.tls=true" \
   -l "traefik.http.routers.go-scratch-app.tls.certresolver=production" \
   go-scratch-app
+
+
+cd /var/lib/docker/volumes
