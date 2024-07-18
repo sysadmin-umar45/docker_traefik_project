@@ -22,7 +22,7 @@ services:
       # - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$RwVPmt/3$$TUbpmK1PxxIHrlT/Yg3BW."
       # - "traefik.http.routers.dashboard.middlewares=auth"
       - "traefik.http.routers.traefik.service=api@internal"
-      - 'traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$RwVPmt/3$$TUbpmK1PxxIHrlT/Yg3BW.'
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$RwVPmt/3$$TUbpmK1PxxIHrlT/Yg3BW."
 
   go-scratch-app:
     image: go-scratch-app  # Replace with your actual Go app image
