@@ -33,6 +33,7 @@ cd ..
 # Update go sample app
 echo "Updating go sample app..."
 cd /home/ubuntu/docker_traefik_project
+git stash push -m "temp-stash"
 git pull
 ensure_executable "./build-scratch.sh"
 ./build-scratch.sh
