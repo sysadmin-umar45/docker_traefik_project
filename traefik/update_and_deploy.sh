@@ -22,7 +22,8 @@ ensure_executable() {
 
 # Update secrets-manager app
 echo "Updating secrets-manager app..."
-cd /home/ubuntu/secrets-manager
+cd /home/ubuntu/
+cd secrets-manager
 git pull
 npm install 
 npm run build
