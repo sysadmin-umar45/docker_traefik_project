@@ -24,6 +24,9 @@ ensure_executable() {
 echo "Updating secrets-manager app..."
 cd /home/ubuntu/secrets-manager
 git pull
+npm install 
+npm run build
+# Build Docker image
 docker build -t secrets-manager .
 cd ..
 
