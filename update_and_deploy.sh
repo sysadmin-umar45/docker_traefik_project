@@ -1,5 +1,8 @@
 #!/bin/bash
-# NOTE: WE WILL KEEP THIS IN ~
+
+# Stop script execution on any error
+set -e
+
 # Function to handle errors
 handle_error() {
     echo "Error on line $1"
@@ -9,23 +12,33 @@ handle_error() {
 # Trap errors and call handle_error
 trap 'handle_error $LINENO' ERR
 
+# Function to ensure a file has execute permission
+ensure_executable() {
+    if [ ! -x "$1" ]; then
+        echo "Adding execute permissions to $1"
+        chmod +x "$1"
+    fi
+}
+
 # Update secrets-manager app
 echo "Updating secrets-manager app..."
-cd secrets-manager || exit
-git pull || exit
-docker build -t secrets-manager . || exit
+cd secrets-manager
+git pull
+docker build -t secrets-manager .
 cd ..
 
 # Update go sample app
 echo "Updating go sample app..."
-cd docker_traefik_project || exit
-git pull || exit
-./build-scratch.sh || exit
+cd docker_traefik_project
+git pull
+ensure_executable "./build-scratch.sh"
+./build-scratch.sh
 cd ..
 
 # Update traefik and run all containers again
 echo "Updating Traefik and running all containers..."
-cd docker_traefik_project || exit
-./update_traefik.sh || exit
+cd docker_traefik_project
+ensure_executable "./update_traefik.sh"
+./update_traefik.sh
 
 echo "Update and deployment completed successfully."
