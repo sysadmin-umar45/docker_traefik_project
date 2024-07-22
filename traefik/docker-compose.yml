@@ -38,17 +38,17 @@ services:
       - "traefik.http.routers.go-scratch-app.entrypoints=web,websecure"
       - "traefik.http.routers.go-scratch-app.tls=true"
       - "traefik.http.routers.go-scratch-app.tls.certresolver=production"
-  nginx:
-    image: nginx  
-    container_name: nginx
-    networks:
-      - web
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`nginx-traefik.ayetu.net`)"
-      - "traefik.http.routers.nginx.entrypoints=web,websecure"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.routers.nginx.tls.certresolver=production"
+  # nginx:
+  #   image: nginx  
+  #   container_name: nginx
+  #   networks:
+  #     - web
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.nginx.rule=Host(`nginx-traefik.ayetu.net`)"
+  #     - "traefik.http.routers.nginx.entrypoints=web,websecure"
+  #     - "traefik.http.routers.nginx.tls=true"
+  #     - "traefik.http.routers.nginx.tls.certresolver=production"
 networks:
   web:
     external: false
