@@ -15,6 +15,6 @@ sudo cp traefik.yml /etc/traefik/traefik.yml || { echo "Failed to copy traefik.y
 sudo cp middleware.yml /etc/traefik/middleware.yml || { echo "Failed to copy middleware.yml"; exit 1; }
 
 # Restart the Docker Compose services
-docker-compose down && docker-compose up -d || { echo "Docker Compose failed"; exit 1; }
+docker-compose down --remove-orphans && docker-compose up -d || { echo "Docker Compose failed"; exit 1; }
 
 echo "Traefik and services have been updated and restarted successfully."
