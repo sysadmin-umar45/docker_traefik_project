@@ -22,22 +22,19 @@ ensure_executable() {
 
 # Update secrets-manager app
 echo "Updating secrets-manager app..."
-cd secrets-manager
+cd ~/secrets-manager
 git pull
 docker build -t secrets-manager .
 cd ..
 
 # Update go sample app
 echo "Updating go sample app..."
-cd docker_traefik_project
+cd ~/docker_traefik_project
 git pull
 ensure_executable "./build-scratch.sh"
 ./build-scratch.sh
-cd ..
-
 # Update traefik and run all containers again
 echo "Updating Traefik and running all containers..."
-cd docker_traefik_project
 ensure_executable "./update_traefik.sh"
 ./update_traefik.sh
 
