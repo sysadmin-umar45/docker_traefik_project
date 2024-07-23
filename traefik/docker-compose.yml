@@ -59,6 +59,10 @@ services:
       - web
     ports:
       - "8082:8080"  # Map internal Go app port 8080 to external port 8081
+    environment:
+      - AWS_REGION=us-east-1
+    volumes:
+      - ~/.aws:/root/.aws:ro  # Mount AWS credentials      
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.container-launcher.rule=Host(`container-launcher.ayetu.net`)"

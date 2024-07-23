@@ -47,6 +47,7 @@ git pull
 ensure_executable "./build-scratch.sh"
 ./build-scratch.sh
 # Update traefik and run all containers again
+cd /home/ubuntu/docker_traefik_project
 echo "Updating Traefik and running all containers..."
 ensure_executable "./update_traefik.sh"
 ./update_traefik.sh

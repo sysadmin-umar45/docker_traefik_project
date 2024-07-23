@@ -2,7 +2,7 @@
 # Run only update_and_deploy script, if you want to work on existing 2 projects
 # I you  make any changes in update_and_deploy script
 cd ~/docker_traefik_project/ && git pull 
-cd ./traefik && sudo chmod +x update_and_deploy.sh && sudo ./update_and_deploy.sh
+cd ~/docker_traefik_project/traefik && sudo chmod +x update_and_deploy.sh && sudo ./update_and_deploy.sh
 
 
 
