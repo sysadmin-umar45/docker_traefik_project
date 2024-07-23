@@ -25,6 +25,7 @@ echo "Updating secrets-manager app..."
 cd /home/ubuntu/
 cd secrets-manager
 git pull
+sudo chown -R $USER:$USER .
 npm install 
 npm run build
 # Build Docker image
@@ -34,6 +35,13 @@ cd ..
 # Update go sample app
 echo "Updating go sample app..."
 cd /home/ubuntu/docker_traefik_project
+git stash push -m "temp-stash"
+git pull
+ensure_executable "./build-scratch.sh"
+./build-scratch.sh
+# Update container-launcher app
+echo "Updating container-launcher app..."
+cd /home/ubuntu/container-launcher
 git stash push -m "temp-stash"
 git pull
 ensure_executable "./build-scratch.sh"

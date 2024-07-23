@@ -28,6 +28,9 @@ services:
     container_name: go-scratch-app
     environment:
       - NAME=Douglas
+    #   - AWS_REGION=us-east-1
+    # volumes:
+    #   - ~/.aws:/root/.aws:ro  # Mount AWS credentials
     networks:
       - web
     ports:
@@ -49,6 +52,17 @@ services:
       - "traefik.http.routers.secrets-manager.entrypoints=web,websecure"
       - "traefik.http.routers.secrets-manager.tls=true"
       - "traefik.http.routers.secrets-manager.tls.certresolver=production"
+  container-launcher:
+    image: container-launcher  
+    container_name: container-launcher
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.container-launcher.rule=Host(`container-launcher.ayetu.net`)"
+      - "traefik.http.routers.container-launcher.entrypoints=web,websecure"
+      - "traefik.http.routers.container-launcher.tls=true"
+      - "traefik.http.routers.container-launcher.tls.certresolver=production"
 networks:
   web:
     external: false
