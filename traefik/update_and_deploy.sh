@@ -34,13 +34,13 @@ git pull
 ensure_executable "./build-scratch.sh"
 ./build-scratch.sh
 # Update secrets-manager app
-# echo "Updating secrets-manager app..."
-# cd /home/ubuntu/secrets-manager
-# git pull
-# npm install 
-# npm run build
+echo "Updating secrets-manager app..."
+cd /home/ubuntu/secrets-manager
+git pull
+npm install 
+npm run build
 # Build Docker image
-# docker build -t secrets-manager .
+docker build -t secrets-manager .
 # Update traefik and run all containers again
 cd /home/ubuntu/docker_traefik_project
 echo "Updating Traefik and running all containers..."
