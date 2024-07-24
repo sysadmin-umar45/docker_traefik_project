@@ -19,7 +19,20 @@ ensure_executable() {
         chmod +x "$1"
     fi
 }
-
+# Update container-launcher app
+echo "Updating container-launcher app..."
+cd /home/ubuntu/container-launcher
+git stash push -m "temp-stash"
+git pull
+ensure_executable "./build-scratch.sh"
+./build-scratch.sh
+# Update go sample app
+echo "Updating go sample app..."
+cd /home/ubuntu/docker_traefik_project
+git stash push -m "temp-stash"
+git pull
+ensure_executable "./build-scratch.sh"
+./build-scratch.sh
 # Update secrets-manager app
 echo "Updating secrets-manager app..."
 cd /home/ubuntu/secrets-manager
@@ -28,22 +41,6 @@ npm install
 npm run build
 # Build Docker image
 docker build -t secrets-manager .
-cd ..
-
-# Update go sample app
-echo "Updating go sample app..."
-cd /home/ubuntu/docker_traefik_project
-git stash push -m "temp-stash"
-git pull
-ensure_executable "./build-scratch.sh"
-./build-scratch.sh
-# Update container-launcher app
-echo "Updating container-launcher app..."
-cd /home/ubuntu/container-launcher
-git stash push -m "temp-stash"
-git pull
-ensure_executable "./build-scratch.sh"
-./build-scratch.sh
 # Update traefik and run all containers again
 cd /home/ubuntu/docker_traefik_project
 echo "Updating Traefik and running all containers..."
