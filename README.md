@@ -12,4 +12,5 @@ cd ~/docker_traefik_project/ && ./update_traefik.sh
 
 testing webhook 
 testing secrets and the webhook in seperate files 4
+with my secrets
 
