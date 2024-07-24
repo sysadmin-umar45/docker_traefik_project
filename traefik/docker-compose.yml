@@ -28,9 +28,6 @@ services:
     container_name: go-scratch-app
     environment:
       - NAME=Douglas
-    #   - AWS_REGION=us-east-1
-    # volumes:
-    #   - ~/.aws:/root/.aws:ro  # Mount AWS credentials
     networks:
       - web
     ports:
@@ -62,7 +59,8 @@ services:
     environment:
       - AWS_REGION=us-east-1
     volumes:
-      - ~/.aws:/root/.aws:ro  # Mount AWS credentials      
+      - ~/.aws:/root/.aws:ro  # Mount AWS credentials  
+      - /home/ubuntu/data:/data    
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.container-launcher.rule=Host(`container-launcher.ayetu.net`)"
